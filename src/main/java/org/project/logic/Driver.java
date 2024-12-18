@@ -1,9 +1,6 @@
 package org.project.logic;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
 import org.project.logic.persistence.DaoFactory;
 import org.project.logic.persistence.PersistenceProvider;
 import org.project.logic.view.CliLogin;

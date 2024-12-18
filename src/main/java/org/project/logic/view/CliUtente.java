@@ -1,5 +1,9 @@
 package org.project.logic.view;
 
+import org.project.logic.Bean.LibroBean;
+import org.project.logic.Control.CompraLibroController;
+import org.project.logic.Control.VendiLibroController;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,10 +12,14 @@ import java.io.InputStreamReader;
 public class CliUtente {
     boolean quit;
     BufferedReader br;
+    CompraLibroController cl;
+    VendiLibroController vl;
 
     public CliUtente() {
         quit = false;
         br = new BufferedReader(new InputStreamReader(System.in));
+        cl = new CompraLibroController();
+        vl = new VendiLibroController();
     }
 
     public boolean mainMenu() throws IOException {
@@ -111,7 +119,7 @@ public class CliUtente {
                     break;
                 case "5":
                     Printer.printMsgln("Cerca");
-                    // TODO chiama CompraLibroController()
+                    cl.compraLibro(new LibroBean(titoloLibro, categoria, condizioni, rangePrezzi));
                     break;
                 case "6":
                     return;
@@ -122,8 +130,76 @@ public class CliUtente {
     }
 
 
-    public void vendiLibro(){
-        System.out.println("Vendi Libro");
+    public void vendiLibro() throws IOException {
+
+        String titoloLibro = "";
+        String autore = "";
+        String categoria = "";
+        String condizioni = "";
+        int prezzo = 0;
+
+        while(!quit) {
+            Printer.printMsgln("Vendi Libro");
+            Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + "]");
+            Printer.printMsgln("\t2) Seleziona autore del libro [" + autore + "]");
+            Printer.printMsgln("\t3) Seleziona categoria [" + categoria + "]");
+            Printer.printMsgln("\t4) Seleziona condizioni libro [" + condizioni + "]");
+            Printer.printMsgln("\t5) Seleziona prezzo " + "[" + prezzo + "€]");
+            Printer.printMsgln("\t6) Crea annuncio");
+            Printer.printMsgln("\t7) Indietro");
+            Printer.printMsg(": ");
+
+            String action = br.readLine();
+
+            switch(action) {
+                case "1":
+                    Printer.printMsgln("Inserisci titolo");
+                    Printer.printMsg("\t: ");
+                    titoloLibro = br.readLine();
+                    break;
+                case "2":
+                    Printer.printMsgln("Inserisci autore");
+                    Printer.printMsg("\t: ");
+                    autore = br.readLine();
+                    break;
+                case "3":
+                    Printer.printMsgln("Seleziona categoria [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
+                    Printer.printMsg("\t: ");
+                    int s = Integer.parseInt(br.readLine());
+                    categoria = switch (s){
+                        case 0 -> "Ingegneria";
+                        case 1 -> "Medicina";
+                        case 2 -> "Economia";
+                        case 3 -> "Lettere";
+                        case 4 -> "Matematica";
+                        default -> null;
+                    };
+                    break;
+                case "4":
+                    Printer.printMsgln("Seleziona condizioni [0: Come nuovo, 1: Ottimo, 2: Smart]");
+                    Printer.printMsg("\t: ");
+                    int s1 = Integer.parseInt(br.readLine());
+                    condizioni = switch (s1){
+                        case 0 -> "Come nuovo";
+                        case 1 -> "Ottimo";
+                        case 2 -> "Smart";
+                        default -> null;
+                    };
+                    break;
+                case "5":
+                    Printer.printMsgln("Inserisci prezzo");
+                    Printer.printMsg("\t: ");
+                    prezzo = Integer.parseInt(br.readLine());
+                    break;
+                case "6":
+                    vl.creaAnnuncio();
+                    break;
+                case "7":
+                    return;
+                default:
+                    break;
+            }
+        }
     }
 
     public void profilo(){

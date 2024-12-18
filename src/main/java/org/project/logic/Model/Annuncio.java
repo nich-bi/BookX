@@ -6,13 +6,17 @@ public class Annuncio {
     Utente venditore;
     Libro libro;
     int price;
-    int id;
+    String id;
 
-    public Annuncio(int id, int price, Libro libro, Utente venditore) {
+    public Annuncio(String id, int price, Libro libro, Utente venditore) {
         this.id = id;
         this.price = price;
         this.libro = libro;
         this.venditore = venditore;
+    }
+
+    public Annuncio(String id) {
+        this.id = id;
     }
 
     public Utente getVenditore() {
@@ -27,7 +31,7 @@ public class Annuncio {
         return price;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -43,7 +47,7 @@ public class Annuncio {
         this.price = price;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

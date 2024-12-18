@@ -1,18 +1,18 @@
 package org.project.logic.Control;
 
+import org.project.logic.Bean.LibroBean;
+
+
 public class CompraLibroController {
 
-    String titoloLibro;
-    String categoria ;
-    String condizioni;
-    int[] rangePrezzi;
-
-    public CompraLibroController(String titoloLibro, String categoria, String condizioni, int[] rangePrezzi) {
-        this.titoloLibro = titoloLibro;
-        this.categoria = categoria;
-        this.condizioni = condizioni;
-        this.rangePrezzi = rangePrezzi;
+    public CompraLibroController() {
     }
+
+
+    public void compraLibro(LibroBean lb) {
+        System.out.println("compra libro controller");
+    }
+
 
 
 }

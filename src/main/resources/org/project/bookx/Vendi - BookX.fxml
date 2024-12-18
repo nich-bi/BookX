@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2C2B2B;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="WHITE" layoutX="61.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserisci i dati del libro da vendere:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Text>
+      <TextField layoutX="207.0" layoutY="151.0" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" text="Inserisci il nome del libro" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="206.0" />
+      <TextField layoutX="207.0" layoutY="214.0" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" text="Inserisci l'autore del libro" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="206.0" />
+      <TextField layoutX="207.0" layoutY="403.0" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" text="Inserisci il prezzo del libro" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="206.0" />
+      <TextField layoutX="207.0" layoutY="470.0" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="206.0" />
+      <MenuButton layoutX="210.0" layoutY="342.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" text="Seleziona la condizione del libro" AnchorPane.rightAnchor="206.0">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Come nuovo" />
+          <MenuItem mnemonicParsing="false" text="Ottimo" />
+            <MenuItem mnemonicParsing="false" text="Smart" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="210.0" layoutY="281.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="487.0" style="-fx-background-color: #403E3E; -fx-background-radius: 10;" text="Seleziona la categoria del libro" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="206.0">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Ingegneria" />
+            <MenuItem mnemonicParsing="false" text="Medicina" />
+            <MenuItem mnemonicParsing="false" text="Economia" />
+         </items>
+      </MenuButton>
+      <AnchorPane prefHeight="63.0" prefWidth="900.0" style="-fx-background-color: #403E3E;">
+         <children>
+            <Text fill="WHITE" layoutX="27.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="500.0" layoutY="14.0" prefHeight="35.0" prefWidth="109.0" style="-fx-background-color: #2B5634; -fx-background-radius: 18;" />
+            <Text fill="#075a19" layoutX="109.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="319.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compra">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="828.0" layoutY="15.0" prefHeight="35.0" prefWidth="52.0" style="-fx-background-color: #403E3E; -fx-background-radius: 18;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="11.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@BookX%20UI%20JavaFX/img/contacts-xxl.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" layoutX="524.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendi">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

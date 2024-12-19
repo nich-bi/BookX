@@ -6,15 +6,17 @@ public class AnnuncioBean {
 
     String titoloLibro;
     String autore;
+    String isbn;
     String categoria;
     String condizioni;
     int prezzo;
     Utente venditore;
 
 
-    public AnnuncioBean(String titoloLibro, String autore, String categoria, String condizioni, int prezzo) {
+    public AnnuncioBean(String titoloLibro, String autore, String isbn,  String categoria, String condizioni, int prezzo) {
         this.titoloLibro = titoloLibro;
         this.autore = autore;
+        this.isbn = isbn;
         this.categoria = categoria;
         this.condizioni = condizioni;
         this.prezzo = prezzo;
@@ -58,5 +60,21 @@ public class AnnuncioBean {
 
     public void setPrezzo(int prezzo) {
         this.prezzo = prezzo;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public Utente getVenditore() {
+        return venditore;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setVenditore(Utente venditore) {
+        this.venditore = venditore;
     }
 }

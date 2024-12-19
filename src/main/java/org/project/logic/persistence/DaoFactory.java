@@ -1,5 +1,7 @@
 package org.project.logic.persistence;
 
+import org.project.logic.model.Libro;
+
 public abstract class DaoFactory {
     private static DaoFactory instance = null;
 
@@ -15,4 +17,5 @@ public abstract class DaoFactory {
     public abstract UserDao getUserDao();
     public abstract AnnuncioDao getAnnuncioDao();
 
+    public abstract LibroDao getLibroDao();
 }

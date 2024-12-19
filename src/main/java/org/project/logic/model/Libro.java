@@ -5,7 +5,11 @@ public class Libro {
     String titolo;
     String autore;
     String categoria;
-    int ISBN;
+    String isbn;
+
+    public Libro(String isbn){
+        this.isbn = isbn;
+    }
 
     public Libro(String categoria, String autore, String titolo) {
         this.categoria = categoria;
@@ -25,8 +29,8 @@ public class Libro {
         return categoria;
     }
 
-    public int getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
     public void setTitolo(String titolo) {
@@ -41,7 +45,8 @@ public class Libro {
         this.categoria = categoria;
     }
 
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }
+

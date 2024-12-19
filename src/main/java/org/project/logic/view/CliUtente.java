@@ -113,7 +113,7 @@ public class CliUtente {
                     break;
                 case "5":
                     Printer.printMsgln("Cerca");
-                    cl.compraLibro(new LibroBean(titoloLibro, categoria, condizioni, rangePrezzi));
+                    cl.cercaLibro(new LibroBean(titoloLibro, categoria, condizioni, rangePrezzi));
                     break;
                 case "6":
                     return;
@@ -130,40 +130,47 @@ public class CliUtente {
         String autore = "";
         String categoria = "";
         String condizioni = "";
+        String isbn = "";
         int prezzo = 0;
 
         while(!quit) {
             Printer.printMsgln("Vendi Libro");
             Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + "]");
             Printer.printMsgln("\t2) Seleziona autore del libro [" + autore + "]");
-            Printer.printMsgln("\t3) Seleziona categoria [" + categoria + "]");
-            Printer.printMsgln("\t4) Seleziona condizioni libro [" + condizioni + "]");
-            Printer.printMsgln("\t5) Seleziona prezzo " + "[" + prezzo + "€]");
-            Printer.printMsgln("\t6) Crea annuncio");
-            Printer.printMsgln("\t7) Indietro");
+            Printer.printMsgln("\t3) Seleziona ISBN del libro [" + isbn + "]");
+            Printer.printMsgln("\t4) Seleziona categoria [" + categoria + "]");
+            Printer.printMsgln("\t5) Seleziona condizioni libro [" + condizioni + "]");
+            Printer.printMsgln("\t6) Seleziona prezzo " + "[" + prezzo + "€]");
+            Printer.printMsgln("\t7) Crea annuncio");
+            Printer.printMsgln("\t8) Indietro");
             Printer.printMsg(": ");
 
             String action = br.readLine();
 
             switch(action) {
                 case "1":
-                    Printer.printMsgln("Inserisci titolo");
+                    Printer.printMsgln("Inserisci titolo del libro da vendere");
                     Printer.printMsg("\t: ");
                     titoloLibro = br.readLine();
                     break;
                 case "2":
-                    Printer.printMsgln("Inserisci autore");
+                    Printer.printMsgln("Inserisci autore del libro da vendere");
                     Printer.printMsg("\t: ");
                     autore = br.readLine();
                     break;
                 case "3":
-                    Printer.printMsgln("Seleziona categoria [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
+                    Printer.printMsgln("Inserisci isbn del libro da vendere");
+                    Printer.printMsg("\t: ");
+                    isbn = br.readLine();
+                    break;
+                case "4":
+                    Printer.printMsgln("Seleziona categoria libro [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
                     Printer.printMsg("\t: ");
                     int s = Integer.parseInt(br.readLine());
                     categoria = getString(s);
                     break;
-                case "4":
-                    Printer.printMsgln("Seleziona condizioni [0: Come nuovo, 1: Ottimo, 2: Smart]");
+                case "5":
+                    Printer.printMsgln("Seleziona condizioni libro [0: Come nuovo, 1: Ottimo, 2: Smart]");
                     Printer.printMsg("\t: ");
                     int s1 = Integer.parseInt(br.readLine());
                     condizioni = switch (s1){
@@ -173,15 +180,15 @@ public class CliUtente {
                         default -> null;
                     };
                     break;
-                case "5":
-                    Printer.printMsgln("Inserisci prezzo");
+                case "6":
+                    Printer.printMsgln("Inserisci prezzo libro");
                     Printer.printMsg("\t: ");
                     prezzo = Integer.parseInt(br.readLine());
                     break;
-                case "6":
-                    vl.creaAnnuncio(new AnnuncioBean(titoloLibro, autore, categoria, condizioni, prezzo));
-                    break;
                 case "7":
+                    vl.creaAnnuncio(new AnnuncioBean(titoloLibro, autore, isbn, categoria, condizioni, prezzo));
+                    break;
+                case "8":
                     return;
                 default:
                     break;
@@ -206,3 +213,5 @@ public class CliUtente {
         System.out.println("Profilo");
     }
 }
+
+

@@ -1,12 +1,16 @@
 package org.project.logic.persistence.memory;
 
 import org.project.logic.persistence.Dao;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class InMemoryDao<K, V> implements Dao<K, V> {
 
     private final Map<K, V> memory = new HashMap<>();
+
 
     protected void store(K key, V value) {
         memory.put(key, value);
@@ -34,4 +38,25 @@ public abstract class InMemoryDao<K, V> implements Dao<K, V> {
     }
 
     protected abstract K getKey(V value);
+
+    // memoria con liste
+    protected final List<V> mem = new ArrayList<>();
+
+    protected void store1(V value) {
+        mem.add(value);
+    }
+
+    // @Override
+    public void delete1(V value){
+        mem.remove(value);
+    }
+
+    // @Override
+    public boolean exists1(V value) {
+        return mem.contains(value);
+    }
+
+    // @Override
+
+
 }

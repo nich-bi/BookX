@@ -7,21 +7,22 @@ public class LibroBean {
     String categoria;
     String condizioni;
     int[] rangePrezzi;
-    int ISBN;
+    String isbn;
 
 
-    public LibroBean(String titolo, String categoria, String condizioni, int[] rangePrezzi) {
+    public LibroBean(String titolo, String categoria, String isbn,  String condizioni, int[] rangePrezzi) {
         this.titolo = titolo;
         this.categoria = categoria;
         this.condizioni = condizioni;
         this.rangePrezzi = rangePrezzi;
+        this.isbn = isbn;
     }
 
-    public LibroBean(String titolo, String autore, String categoria, int ISBN) {
+    public LibroBean(String titolo, String autore, String categoria, String ISBN) {
         this.titolo = titolo;
         this.autore = autore;
         this.categoria = categoria;
-        this.ISBN = ISBN;
+        this.isbn = ISBN;
     }
 
     public String getTitolo() {
@@ -36,8 +37,8 @@ public class LibroBean {
         return categoria;
     }
 
-    public int getISBN() {
-        return ISBN;
+    public String getISBN() {
+        return isbn;
     }
 
     public void setTitolo(String titolo) {
@@ -52,7 +53,7 @@ public class LibroBean {
         this.categoria = categoria;
     }
 
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
+    public void setISBN(String ISBN) {
+        this.isbn = ISBN;
     }
 }

@@ -4,7 +4,6 @@ import org.project.logic.bean.AnnuncioBean;
 import org.project.logic.bean.LibroBean;
 import org.project.logic.control.CompraLibroController;
 import org.project.logic.control.VendiLibroController;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -63,34 +62,38 @@ public class CliUtente {
         String titoloLibro = "";
         String categoria = "";
         String condizioni = "";
+        String isbn = "";
         int[] rangePrezzi = {0, 100};
 
 
         while(!quit) {
-            Printer.printMsgln("Compra Libro");
-            Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + "]");
-            Printer.printMsgln("\t2) Seleziona categoria [" + categoria + "]");
-            Printer.printMsgln("\t3) Seleziona condizioni libro [" + condizioni+ "]");
-            Printer.printMsgln("\t4) Seleziona range prezzo " + "[" + rangePrezzi[0] + ", " + rangePrezzi[1] + "]");
-            Printer.printMsgln("\t5) Cerca");
-            Printer.printMsgln("\t6) Indietro");
+            Printer.printMsgln("Cerca Libro");
+            Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + isbn + "]");
+            Printer.printMsgln("\t2) Seleziona isbn [" + isbn + "]");
+            Printer.printMsgln("\t3) Applica filtri (opzionale) [ categoria:" + categoria + ", condizioni: " + condizioni +  ", range prezzo: " + "(" + rangePrezzi[0] + ", " + rangePrezzi[1] + ")"+ "]");
+            Printer.printMsgln("\t4) Cerca");
+            Printer.printMsgln("\t5) Indietro");
             Printer.printMsg(": ");
 
             String action = br.readLine();
 
             switch(action) {
                 case "1":
-                    Printer.printMsgln("Inserisci titolo");
+                    Printer.printMsgln("Inserisci titolo libro");
                     Printer.printMsg("\t: ");
                     titoloLibro = br.readLine();
                     break;
                 case "2":
+                    Printer.printMsgln("Inserisci isbn libro");
+                    Printer.printMsg("\t: ");
+                    isbn = br.readLine();
+                    break;
+                case "3":
                     Printer.printMsgln("Seleziona categoria [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
                     Printer.printMsg("\t: ");
                     int s = Integer.parseInt(br.readLine());
                     categoria = getString(s);
-                    break;
-                case "3":
+
                     Printer.printMsgln("Seleziona condizioni [0: Come nuovo, 1: Ottimo, 2: Smart]");
                     Printer.printMsg("\t: ");
                     int s1 = Integer.parseInt(br.readLine());
@@ -100,8 +103,7 @@ public class CliUtente {
                         case 2 -> "Smart";
                         default -> null;
                     };
-                    break;
-                case "4":
+
                     Printer.printMsgln("Inserisci prezzo minimo");
                     Printer.printMsg("\t: ");
                     int prezzoMinimo = Integer.parseInt(br.readLine());
@@ -110,12 +112,13 @@ public class CliUtente {
                     Printer.printMsg("\t: ");
                     int prezzoMassimo = Integer.parseInt(br.readLine());
                     rangePrezzi[1] = prezzoMassimo;
+
+                    break;
+                case "4":
+                    Printer.printMsgln("Cerca");
+                    cl.cercaLibro(new LibroBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
                     break;
                 case "5":
-                    Printer.printMsgln("Cerca");
-                    cl.cercaLibro(new LibroBean(titoloLibro, categoria, condizioni, rangePrezzi));
-                    break;
-                case "6":
                     return;
                 default:
                     break;

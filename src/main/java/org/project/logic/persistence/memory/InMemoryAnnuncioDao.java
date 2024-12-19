@@ -1,6 +1,6 @@
 package org.project.logic.persistence.memory;
 
-import org.project.logic.Model.Annuncio;
+import org.project.logic.model.Annuncio;
 import org.project.logic.persistence.AnnuncioDao;
 
 public class InMemoryAnnuncioDao extends InMemoryDao<String, Annuncio>  implements AnnuncioDao {
@@ -22,3 +22,4 @@ public class InMemoryAnnuncioDao extends InMemoryDao<String, Annuncio>  implemen
         return new Annuncio(id);
     }
 }
+

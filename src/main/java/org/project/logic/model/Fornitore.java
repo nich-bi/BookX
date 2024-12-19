@@ -1,12 +1,12 @@
-package org.project.logic.Model;
+package org.project.logic.model;
 
-public class Utente extends User{
-
+public class Fornitore extends User{
     String nome;
     String cognome;
     String telefono;
+    String Indirizzo;
 
-    public Utente(User user) {
+    public Fornitore(User user) {
         super(user.getEmail());
         this.password = user.getPassword();
     }

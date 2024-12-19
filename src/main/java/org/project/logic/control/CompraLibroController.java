@@ -1,6 +1,6 @@
-package org.project.logic.Control;
+package org.project.logic.control;
 
-import org.project.logic.Bean.LibroBean;
+import org.project.logic.bean.LibroBean;
 
 
 public class CompraLibroController {

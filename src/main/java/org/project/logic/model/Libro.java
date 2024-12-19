@@ -1,4 +1,4 @@
-package org.project.logic.Model;
+package org.project.logic.model;
 
 public class Libro {
 

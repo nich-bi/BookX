@@ -1,7 +1,7 @@
 package org.project.logic.view;
 
-import org.project.logic.Bean.LoginBean;
-import org.project.logic.Control.LoginController;
+import org.project.logic.bean.LoginBean;
+import org.project.logic.control.LoginController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

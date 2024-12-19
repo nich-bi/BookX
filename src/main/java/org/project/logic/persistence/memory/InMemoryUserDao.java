@@ -1,5 +1,5 @@
 package org.project.logic.persistence.memory;
-import org.project.logic.Model.User;
+import org.project.logic.model.User;
 import org.project.logic.persistence.UserDao;
 
 

@@ -11,6 +11,8 @@ public abstract class DaoFactory {
         return instance;
     }
 
+
     public abstract UserDao getUserDao();
-    // aggiungi altri Dao entity
+    public abstract AnnuncioDao getAnnuncioDao();
+
 }

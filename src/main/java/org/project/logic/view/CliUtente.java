@@ -1,8 +1,9 @@
 package org.project.logic.view;
 
-import org.project.logic.Bean.LibroBean;
-import org.project.logic.Control.CompraLibroController;
-import org.project.logic.Control.VendiLibroController;
+import org.project.logic.bean.AnnuncioBean;
+import org.project.logic.bean.LibroBean;
+import org.project.logic.control.CompraLibroController;
+import org.project.logic.control.VendiLibroController;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -87,14 +88,7 @@ public class CliUtente {
                     Printer.printMsgln("Seleziona categoria [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
                     Printer.printMsg("\t: ");
                     int s = Integer.parseInt(br.readLine());
-                    categoria = switch (s){
-                        case 0 -> "Ingegneria";
-                        case 1 -> "Medicina";
-                        case 2 -> "Economia";
-                        case 3 -> "Lettere";
-                        case 4 -> "Matematica";
-                        default -> null;
-                    };
+                    categoria = getString(s);
                     break;
                 case "3":
                     Printer.printMsgln("Seleziona condizioni [0: Come nuovo, 1: Ottimo, 2: Smart]");
@@ -166,14 +160,7 @@ public class CliUtente {
                     Printer.printMsgln("Seleziona categoria [0: Ingegneria, 1: Medicina, 2: Economia, 3: Lettere, 4: Matematica]");
                     Printer.printMsg("\t: ");
                     int s = Integer.parseInt(br.readLine());
-                    categoria = switch (s){
-                        case 0 -> "Ingegneria";
-                        case 1 -> "Medicina";
-                        case 2 -> "Economia";
-                        case 3 -> "Lettere";
-                        case 4 -> "Matematica";
-                        default -> null;
-                    };
+                    categoria = getString(s);
                     break;
                 case "4":
                     Printer.printMsgln("Seleziona condizioni [0: Come nuovo, 1: Ottimo, 2: Smart]");
@@ -192,7 +179,7 @@ public class CliUtente {
                     prezzo = Integer.parseInt(br.readLine());
                     break;
                 case "6":
-                    vl.creaAnnuncio();
+                    vl.creaAnnuncio(new AnnuncioBean(titoloLibro, autore, categoria, condizioni, prezzo));
                     break;
                 case "7":
                     return;
@@ -200,6 +187,19 @@ public class CliUtente {
                     break;
             }
         }
+    }
+
+    private String getString(int s) {
+        String categoria;
+        categoria = switch (s){
+            case 0 -> "Ingegneria";
+            case 1 -> "Medicina";
+            case 2 -> "Economia";
+            case 3 -> "Lettere";
+            case 4 -> "Matematica";
+            default -> null;
+        };
+        return categoria;
     }
 
     public void profilo(){

@@ -1,9 +1,9 @@
-package org.project.logic.Control;
+package org.project.logic.control;
 
-import org.project.logic.Bean.LoginBean;
-import org.project.logic.Model.Fornitore;
-import org.project.logic.Model.User;
-import org.project.logic.Model.Utente;
+import org.project.logic.bean.LoginBean;
+import org.project.logic.model.Fornitore;
+import org.project.logic.model.User;
+import org.project.logic.model.Utente;
 import org.project.logic.persistence.DaoFactory;
 import org.project.logic.persistence.UserDao;
 

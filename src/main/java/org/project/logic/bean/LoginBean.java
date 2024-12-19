@@ -1,4 +1,4 @@
-package org.project.logic.Bean;
+package org.project.logic.bean;
 
 
 public class LoginBean {

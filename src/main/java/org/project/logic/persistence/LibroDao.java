@@ -1,7 +1,6 @@
 package org.project.logic.persistence;
 
-import org.project.logic.Model.Annuncio;
-import org.project.logic.Model.Libro;
+import org.project.logic.model.Libro;
 
 public interface LibroDao extends Dao<String, Libro>{
 

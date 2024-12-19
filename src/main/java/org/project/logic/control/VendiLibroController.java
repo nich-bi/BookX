@@ -30,9 +30,14 @@ public class VendiLibroController {
 
         Utente venditore =  (Utente) lc.getCurrentUser();
         a.setVenditore(venditore);
+        a.setLibro(l);
 
         ad.store(a);
         ld.store(l);
+
+        ad.store1(a);
+        ld.store1(l);
+
     }
 
 }

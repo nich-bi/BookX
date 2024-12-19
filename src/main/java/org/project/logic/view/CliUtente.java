@@ -1,12 +1,13 @@
 package org.project.logic.view;
 
 import org.project.logic.bean.AnnuncioBean;
-import org.project.logic.bean.LibroBean;
 import org.project.logic.control.CompraLibroController;
 import org.project.logic.control.VendiLibroController;
+import org.project.logic.model.Annuncio;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 
 public class CliUtente {
@@ -68,7 +69,7 @@ public class CliUtente {
 
         while(!quit) {
             Printer.printMsgln("Cerca Libro");
-            Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + isbn + "]");
+            Printer.printMsgln("\t1) Inserisci titolo libro [" + titoloLibro + "]");
             Printer.printMsgln("\t2) Seleziona isbn [" + isbn + "]");
             Printer.printMsgln("\t3) Applica filtri (opzionale) [ categoria:" + categoria + ", condizioni: " + condizioni +  ", range prezzo: " + "(" + rangePrezzi[0] + ", " + rangePrezzi[1] + ")"+ "]");
             Printer.printMsgln("\t4) Cerca");
@@ -116,7 +117,10 @@ public class CliUtente {
                     break;
                 case "4":
                     Printer.printMsgln("Cerca");
-                    cl.cercaLibro(new LibroBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
+                    List<Annuncio> res;
+                    //res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
+                     res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
+                     printRicerca(res);
                     break;
                 case "5":
                     return;
@@ -125,6 +129,7 @@ public class CliUtente {
             }
         }
     }
+
 
 
     public void vendiLibro() throws IOException {
@@ -214,6 +219,15 @@ public class CliUtente {
 
     public void profilo(){
         System.out.println("Profilo");
+    }
+
+    public void printRicerca(List<Annuncio> l){
+        int i = 0;
+        for(Annuncio a : l){
+            Printer.printMsg(i + ")");
+            Printer.printMsgln(a.getLibro().getTitolo() + " " + a.getLibro().getAutore() + " " + a.getLibro().getCategoria() + " " + a.getPrice() + " " );
+            i++;
+        }
     }
 }
 

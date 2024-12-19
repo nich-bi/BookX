@@ -2,7 +2,6 @@ package org.project.logic.persistence.memory;
 
 import org.project.logic.model.Libro;
 import org.project.logic.persistence.LibroDao;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,17 +25,5 @@ public class InMemoryLibroDao extends InMemoryDao<String, Libro>  implements Lib
         return new Libro(isbn);
     }
 
-    /*
-    // cerca libri per titolo dalla lista
-    public List<Libro> load1(String titolo) {
-        List<Libro> result = new ArrayList<>();
-        for (Libro libro : mem) {
-            if (libro.getTitolo().equalsIgnoreCase(titolo)) {
-                result.add(libro);
-            }
-        }
-        return result;
-    }
-    */
 
 }

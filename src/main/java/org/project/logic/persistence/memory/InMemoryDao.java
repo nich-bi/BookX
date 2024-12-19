@@ -39,10 +39,13 @@ public abstract class InMemoryDao<K, V> implements Dao<K, V> {
 
     protected abstract K getKey(V value);
 
-    // memoria con liste
-    protected final List<V> mem = new ArrayList<>();
 
-    protected void store1(V value) {
+
+
+    // MEMORIA CON LISTE:
+    private final List<V> mem = new ArrayList<>();
+
+    public void store1(V value) {
         mem.add(value);
     }
 
@@ -56,7 +59,19 @@ public abstract class InMemoryDao<K, V> implements Dao<K, V> {
         return mem.contains(value);
     }
 
-    // @Override
 
+//    public List<V> loadAll(K id) {
+//        List<V> l = new ArrayList<>();
+//        for (V v : mem) {
+//            if (v.equals(id)) {
+//                l.add(v);
+//            }
+//        }
+//        return l;
+//    }
+
+    public List<V> loadAll() {
+        return mem;
+    }
 
 }

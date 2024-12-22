@@ -2,8 +2,11 @@ package org.project.logic.view;
 
 import org.project.logic.bean.AnnuncioBean;
 import org.project.logic.control.CompraLibroController;
+import org.project.logic.control.LoginController;
 import org.project.logic.control.VendiLibroController;
 import org.project.logic.model.Annuncio;
+import org.project.logic.model.Utente;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +18,7 @@ public class CliUtente {
     BufferedReader br;
     CompraLibroController cl;
     VendiLibroController vl;
+    LoginController lc = LoginController.getInstance();
 
     public CliUtente() {
         quit = false;
@@ -117,10 +121,19 @@ public class CliUtente {
                     break;
                 case "4":
                     Printer.printMsgln("Cerca");
+
                     List<Annuncio> res;
-                    //res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
-                     res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
-                     printRicerca(res);
+                    res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
+                    printRicerca(res);
+
+                    if(res.isEmpty()){
+                        Printer.printMsgln("Nessun annuncio trovato");
+                        return;
+                    }
+                    int i = scegliAnnuncio(res);
+
+                    visualizzaAnnuncio(res.get(i));
+
                     break;
                 case "5":
                     return;
@@ -224,11 +237,74 @@ public class CliUtente {
     public void printRicerca(List<Annuncio> l){
         int i = 0;
         for(Annuncio a : l){
-            Printer.printMsg(i + ")");
-            Printer.printMsgln(a.getLibro().getTitolo() + " " + a.getLibro().getAutore() + " " + a.getLibro().getCategoria() + " " + a.getPrice() + " " );
+            Printer.printMsg(i + ") ");
+            Printer.printMsgln("Titolo: " + a.getLibro().getTitolo() + " Autore: " + a.getLibro().getAutore() + " Categoria: " + a.getLibro().getCategoria() + " Prezzo: " + a.getPrice() + "€" );
             i++;
         }
     }
+
+    // nel controller?
+    public int scegliAnnuncio(List<Annuncio> l) throws IOException {
+
+        while(true){
+            Printer.printMsgln("Seleziona il numero dell'annuncio");
+            Printer.printMsg("\t: ");
+            int s = Integer.parseInt(br.readLine());
+            if(s >= 0 && s < l.size()){
+                return s;
+            }
+            Printer.printMsgln("Numero non valido");
+        }
+    }
+
+    public void visualizzaAnnuncio(Annuncio a) throws IOException {
+
+        Utente compratore = (Utente) lc.getCurrentUser();
+
+        while(!quit) {
+            Printer.printMsgln("Annuncio");
+            Printer.printMsgln("\t1) Visualizza informazioni annuncio");
+            Printer.printMsgln("\t2) Compra libro");
+            Printer.printMsgln("\t3) Contatta venditore");
+            Printer.printMsgln("\t4) Indietro");
+            Printer.printMsg(": ");
+
+            String action = br.readLine();
+
+            switch(action) {
+                case "1":
+                    Printer.printMsg("Titolo libro: " + a.getLibro().getTitolo());
+                    Printer.printMsg("Autore libro: " + a.getLibro().getAutore());
+                    Printer.printMsg("ISBN libro: " + a.getLibro().getIsbn());
+                    Printer.printMsg("Categoria libro: " + a.getLibro().getCategoria());
+                    Printer.printMsg("Condizioni libro: " + a.getLibro().getCondizioni());
+                    Printer.printMsg("Prezzo libro: " + a.getPrice());
+                    Printer.printMsgln("Venditore: " + compratore.getEmail());
+                    break;
+                case "2":
+
+                    boolean b = cl.compraLibro(a, compratore);
+
+                    if(b){
+                        Printer.printMsgln("Andato a buon fine");
+                    }else{
+                        Printer.printMsgln("Errore");
+                    }
+
+                    break;
+                case "3":
+                    profilo();
+                    break;
+                case "4":
+                    return;
+                default:
+                    break;
+            }
+        }
+    }
+
+
+
 }
 
 

@@ -11,14 +11,17 @@ import org.project.logic.persistence.LibroDao;
 
 public class VendiLibroController {
 
+    AnnuncioDao ad;
+    LibroDao ld;
+    LoginController lc;
+
     public VendiLibroController() {
+        ad = DaoFactory.getInstance().getAnnuncioDao();
+        ld = DaoFactory.getInstance().getLibroDao();
+        lc = LoginController.getInstance();
     }
 
     public void creaAnnuncio(AnnuncioBean ab) {
-
-        AnnuncioDao ad = DaoFactory.getInstance().getAnnuncioDao();
-        LibroDao ld = DaoFactory.getInstance().getLibroDao();
-        LoginController lc = LoginController.getInstance();
 
         Libro l = ld.create(ab.getIsbn());
         Annuncio a = ad.create(ab.getTitoloLibro());
@@ -27,13 +30,14 @@ public class VendiLibroController {
         l.setTitolo(ab.getTitoloLibro());
         l.setAutore(ab.getAutore());
         l.setCategoria(ab.getCategoria());
+        l.setCondizioni(ab.getCondizioni());
 
         Utente venditore =  (Utente) lc.getCurrentUser();
         a.setVenditore(venditore);
         a.setLibro(l);
 
-        ad.store(a);
-        ld.store(l);
+        // ad.store(a);
+        // ld.store(l);
 
         ad.store1(a);
         ld.store1(l);

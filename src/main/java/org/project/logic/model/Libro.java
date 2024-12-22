@@ -6,15 +6,18 @@ public class Libro {
     String autore;
     String categoria;
     String isbn;
+    String condizioni;
+
 
     public Libro(String isbn){
         this.isbn = isbn;
     }
 
-    public Libro(String categoria, String autore, String titolo) {
+    public Libro(String titolo, String autore, String categoria, String condizioni) {
         this.categoria = categoria;
         this.autore = autore;
         this.titolo = titolo;
+        this.condizioni = condizioni;
     }
 
     public String getTitolo() {
@@ -47,6 +50,14 @@ public class Libro {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getCondizioni() {
+        return condizioni;
+    }
+
+    public void setCondizioni(String condizioni) {
+        this.condizioni = condizioni;
     }
 }
 

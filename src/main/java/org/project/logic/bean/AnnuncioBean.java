@@ -30,6 +30,10 @@ public class AnnuncioBean {
         this.prezzo = rangePrezzi[0];
     }
 
+    public AnnuncioBean(String titoloLibro) {
+        this.titoloLibro = titoloLibro;
+    }
+
     public String getTitoloLibro() {
         return titoloLibro;
     }

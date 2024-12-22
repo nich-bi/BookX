@@ -1,6 +1,5 @@
 package org.project.logic;
 
-
 import org.project.logic.persistence.DaoFactory;
 import org.project.logic.persistence.PersistenceProvider;
 import org.project.logic.view.CliLogin;
@@ -17,6 +16,7 @@ public class Driver {
         CliLogin login = new CliLogin();
         login.loginMenu();
     }
+
 
     private static void setPersistenceProvider(String provider) {
         for (PersistenceProvider p : PersistenceProvider.values()) {

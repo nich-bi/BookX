@@ -9,8 +9,9 @@ import java.util.Map;
 
 public abstract class InMemoryDao<K, V> implements Dao<K, V> {
 
-    private final Map<K, V> memory = new HashMap<>();
 
+
+    private final Map<K, V> memory = new HashMap<>();
 
     protected void store(K key, V value) {
         memory.put(key, value);
@@ -59,16 +60,6 @@ public abstract class InMemoryDao<K, V> implements Dao<K, V> {
         return mem.contains(value);
     }
 
-
-//    public List<V> loadAll(K id) {
-//        List<V> l = new ArrayList<>();
-//        for (V v : mem) {
-//            if (v.equals(id)) {
-//                l.add(v);
-//            }
-//        }
-//        return l;
-//    }
 
     public List<V> loadAll() {
         return mem;

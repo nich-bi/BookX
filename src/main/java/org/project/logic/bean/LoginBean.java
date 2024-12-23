@@ -23,6 +23,7 @@ public class LoginBean {
         this.email = email;
         this.password = password;
         this.telefono = telefono;
+        this.role = role;
     }
 
     public String getNome() {

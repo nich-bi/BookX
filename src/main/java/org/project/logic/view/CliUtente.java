@@ -228,7 +228,7 @@ public class CliUtente {
     }
 
     public void profilo(){
-        System.out.println("Profilo");
+        Printer.printMsgln("Profilo");
     }
 
     public void printRicerca(List<Annuncio> l){

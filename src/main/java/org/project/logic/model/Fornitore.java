@@ -4,7 +4,7 @@ public class Fornitore extends User{
     String nome;
     String cognome;
     String telefono;
-    String Indirizzo;
+    String indirizzo;
 
     public Fornitore(User user) {
         super(user.getEmail());

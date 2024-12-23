@@ -53,7 +53,7 @@ public class LibroBean {
         this.categoria = categoria;
     }
 
-    public void setISBN(String ISBN) {
+    public void setISBN(String isbn) {
         this.isbn = isbn;
     }
 }

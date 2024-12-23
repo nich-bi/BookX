@@ -4,5 +4,5 @@ import org.project.logic.model.Libro;
 
 public interface LibroDao extends Dao<String, Libro>{
 
-    Libro create(String ISBN);
+    Libro create(String isbn);
 }

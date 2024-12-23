@@ -2,11 +2,8 @@ package org.project.logic.view;
 
 import org.project.logic.bean.AnnuncioBean;
 import org.project.logic.control.CompraLibroController;
-import org.project.logic.control.LoginController;
 import org.project.logic.control.VendiLibroController;
 import org.project.logic.model.Annuncio;
-import org.project.logic.model.Utente;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,11 +11,11 @@ import java.util.List;
 
 
 public class CliUtente {
+
     boolean quit;
     BufferedReader br;
     CompraLibroController cl;
     VendiLibroController vl;
-    LoginController lc = LoginController.getInstance();
 
     public CliUtente() {
         quit = false;
@@ -259,7 +256,6 @@ public class CliUtente {
 
     public void visualizzaAnnuncio(Annuncio a) throws IOException {
 
-        Utente compratore = (Utente) lc.getCurrentUser();
 
         while(!quit) {
             Printer.printMsgln("Annuncio");
@@ -273,19 +269,17 @@ public class CliUtente {
 
             switch(action) {
                 case "1":
-                    Printer.printMsg("Titolo libro: " + a.getLibro().getTitolo());
-                    Printer.printMsg("Autore libro: " + a.getLibro().getAutore());
-                    Printer.printMsg("ISBN libro: " + a.getLibro().getIsbn());
-                    Printer.printMsg("Categoria libro: " + a.getLibro().getCategoria());
-                    Printer.printMsg("Condizioni libro: " + a.getLibro().getCondizioni());
-                    Printer.printMsg("Prezzo libro: " + a.getPrice());
-                    Printer.printMsgln("Venditore: " + compratore.getEmail());
+                    Printer.printMsgln("\tTitolo libro: " + a.getLibro().getTitolo());
+                    Printer.printMsgln("\tAutore libro: " + a.getLibro().getAutore());
+                    Printer.printMsgln("\tISBN libro: " + a.getLibro().getIsbn());
+                    Printer.printMsgln("\tCategoria libro: " + a.getLibro().getCategoria());
+                    Printer.printMsgln("\tCondizioni libro: " + a.getLibro().getCondizioni());
+                    Printer.printMsgln("\tPrezzo libro: " + a.getPrice());
+                    Printer.printMsgln("\tVenditore: " + a.getVenditore().getEmail());
                     break;
                 case "2":
 
-                    boolean b = cl.compraLibro(a, compratore);
-
-                    if(b){
+                    if(cl.compraLibro(a, a.getVenditore())){
                         Printer.printMsgln("Andato a buon fine");
                     }else{
                         Printer.printMsgln("Errore");

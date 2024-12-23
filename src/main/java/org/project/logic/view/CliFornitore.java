@@ -8,7 +8,7 @@ public class CliFornitore {
     BufferedReader br;
 
     public boolean mainMenu() throws IOException {
-        System.out.println("CLI Fornitore");
+       Printer.printMsgln("CLI Fornitore");
         return true;
     }
 }

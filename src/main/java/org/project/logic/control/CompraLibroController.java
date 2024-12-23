@@ -5,6 +5,8 @@ import org.project.logic.model.Annuncio;
 import org.project.logic.model.Utente;
 import org.project.logic.persistence.AnnuncioDao;
 import org.project.logic.persistence.DaoFactory;
+import org.project.logic.view.Printer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class CompraLibroController {
 
 
     public boolean compraLibro(Annuncio a, Utente c) {
-        System.out.println("Hai scelto " + a.getLibro().getTitolo() + " venduto da " + c.getEmail());
+        Printer.printMsg("Hai scelto " + a.getLibro().getTitolo() + " venduto da " + c.getEmail());
         return true;
     }
 

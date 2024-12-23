@@ -18,11 +18,11 @@ public class LibroBean {
         this.isbn = isbn;
     }
 
-    public LibroBean(String titolo, String autore, String categoria, String ISBN) {
+    public LibroBean(String titolo, String autore, String categoria, String isbn) {
         this.titolo = titolo;
         this.autore = autore;
         this.categoria = categoria;
-        this.isbn = ISBN;
+        this.isbn = isbn;
     }
 
     public String getTitolo() {
@@ -54,6 +54,6 @@ public class LibroBean {
     }
 
     public void setISBN(String ISBN) {
-        this.isbn = ISBN;
+        this.isbn = isbn;
     }
 }

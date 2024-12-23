@@ -2,8 +2,6 @@ package org.project.logic.persistence.memory;
 
 import org.project.logic.model.Libro;
 import org.project.logic.persistence.LibroDao;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class InMemoryLibroDao extends InMemoryDao<String, Libro>  implements LibroDao {

@@ -2,6 +2,7 @@ package org.project.logic.control;
 
 import org.project.logic.bean.AnnuncioBean;
 import org.project.logic.model.Annuncio;
+import org.project.logic.model.Libro;
 import org.project.logic.model.Utente;
 import org.project.logic.persistence.AnnuncioDao;
 import org.project.logic.persistence.DaoFactory;
@@ -34,24 +35,31 @@ public class CompraLibroController {
     }
 
 
-    /*
-    public List<Annuncio> cercaAnnuncio(AnnuncioBean ab) {
+    public List<Annuncio> cercaAnnuncioFiltered(AnnuncioBean ab) {
 
         List<Annuncio> ricerca = new ArrayList<>();
+
         for(Annuncio a : r){
             Libro l = a.getLibro();
+            if (l.getTitolo().equalsIgnoreCase(ab.getTitoloLibro())){
 
-            if (l.getTitolo().equalsIgnoreCase(ab.getTitoloLibro()) &&
-                    (!ab.getCategoria().isEmpty()) && (l.getCategoria().equalsIgnoreCase(ab.getCategoria())) &&
-                    (!ab.getCondizioni().isEmpty()) && l.getCondizioni().equalsIgnoreCase(ab.getCondizioni()) &&
-                    (!ab.getIsbn().isEmpty()) && l.getIsbn().equalsIgnoreCase(ab.getIsbn()) )
-            {
-                ricerca.add(a);
+                if( l.getCategoria().isEmpty() || l.getCategoria().equals(ab.getCategoria()) ){
+
+                    if( l.getCondizioni().isEmpty() || l.getCondizioni().equals(ab.getCondizioni()) ){
+
+                        if( a.getPrice() >= ab.getRangePrezzo()[0]  && a.getPrice() <= ab.getRangePrezzo()[1]){
+
+                            ricerca.add(a);
+                        }
+                    }
+                }
             }
         }
         return ricerca;
     }
-     */
+
+
+
 
 
     public boolean compraLibro(Annuncio a, Utente c) {

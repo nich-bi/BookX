@@ -120,8 +120,14 @@ public class CliUtente {
                     Printer.printMsgln("Cerca");
 
                     List<Annuncio> res;
+                    res = cl.cercaAnnuncioFiltered(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
+                    printRicerca(res);
+
+                    // Da modificare
+                    Printer.printMsgln("\nTutti gli annunci (filtrati solo per nome):");
                     res = cl.cercaAnnuncio(new AnnuncioBean(titoloLibro, categoria, isbn, condizioni, rangePrezzi));
                     printRicerca(res);
+
 
                     if(res.isEmpty()){
                         Printer.printMsgln("Nessun annuncio trovato");

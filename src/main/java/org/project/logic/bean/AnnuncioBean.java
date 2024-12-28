@@ -9,6 +9,7 @@ public class AnnuncioBean {
     String isbn;
     String categoria;
     String condizioni;
+    int[] rangePrezzo = new int[2];
     int prezzo;
     Utente venditore;
 
@@ -27,12 +28,11 @@ public class AnnuncioBean {
         this.categoria = categoria;
         this.isbn = isbn;
         this.condizioni = condizioni;
-        this.prezzo = rangePrezzi[0];
+        this.rangePrezzo[0] = rangePrezzi[0];
+        this.rangePrezzo[1] = rangePrezzi[1];
+
     }
 
-    public AnnuncioBean(String titoloLibro) {
-        this.titoloLibro = titoloLibro;
-    }
 
     public String getTitoloLibro() {
         return titoloLibro;
@@ -88,5 +88,13 @@ public class AnnuncioBean {
 
     public void setVenditore(Utente venditore) {
         this.venditore = venditore;
+    }
+
+    public int[] getRangePrezzo() {
+        return rangePrezzo;
+    }
+
+    public void setRangePrezzo(int[] rangePrezzo) {
+        this.rangePrezzo = rangePrezzo;
     }
 }

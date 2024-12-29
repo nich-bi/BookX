@@ -233,9 +233,33 @@ public class CliUtente {
         return categoria;
     }
 
-    public void profilo(){
-        Printer.printMsgln("Profilo");
+    public void profilo() throws IOException {
+
+        while(!quit) {
+
+            Printer.printMsgln("\nProfilo");
+            Printer.printMsgln("\t1) Visualizza ordini");
+            Printer.printMsgln("\t2) Notifiche");
+            Printer.printMsgln("\t3) Gestisci annunci");
+            Printer.printMsgln("\t4) ");
+            Printer.printMsgln("\t5) ");
+            Printer.printMsg(": ");
+
+            String action = br.readLine();
+
+            switch(action) {
+                case "1":
+                    break;
+
+                case "2":
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
+
 
     public void printRicerca(List<Annuncio> l){
         int i = 0;

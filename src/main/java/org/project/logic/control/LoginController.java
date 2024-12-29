@@ -11,8 +11,8 @@ import org.project.logic.persistence.UserDao;
 public class LoginController {
 
     private static LoginController instance;
-
     private User currentUser;
+
 
     private LoginController() {}
 
@@ -69,8 +69,9 @@ public class LoginController {
                 u.setPassword(lb.getPassword());
                 u.setTelefono(lb.getTelefono());
 
-                userDao.store(u);
+                userDao.store1(u);
                 return true;
+
             } else if(lb.getRole() == 1) { // Fornitore
 
                 Fornitore f = new Fornitore(user);
@@ -80,7 +81,7 @@ public class LoginController {
                 f.setPassword(lb.getPassword());
                 f.setTelefono(lb.getTelefono());
 
-                userDao.store(f);
+                userDao.store1(f);
                 return true;
             }
 

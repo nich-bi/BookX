@@ -7,7 +7,6 @@ import org.project.logic.model.Utente;
 import org.project.logic.persistence.AnnuncioDao;
 import org.project.logic.persistence.DaoFactory;
 import org.project.logic.view.Printer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,15 +42,11 @@ public class CompraLibroController {
             Libro l = a.getLibro();
             if (l.getTitolo().equalsIgnoreCase(ab.getTitoloLibro())){
 
-                if( l.getCategoria().isEmpty() || l.getCategoria().equals(ab.getCategoria()) ){
+                // filtra categoria, condizioni e prezzo
+                if( (l.getCategoria().isEmpty() || l.getCategoria().equals(ab.getCategoria())) && (l.getCondizioni().isEmpty() || l.getCondizioni().equals(ab.getCondizioni()))
+                      && (a.getPrice() >= ab.getRangePrezzo()[0]  && a.getPrice() <= ab.getRangePrezzo()[1]) ){
 
-                    if( l.getCondizioni().isEmpty() || l.getCondizioni().equals(ab.getCondizioni()) ){
-
-                        if( a.getPrice() >= ab.getRangePrezzo()[0]  && a.getPrice() <= ab.getRangePrezzo()[1]){
-
-                            ricerca.add(a);
-                        }
-                    }
+                    ricerca.add(a);
                 }
             }
         }

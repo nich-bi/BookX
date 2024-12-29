@@ -23,6 +23,7 @@ public class AnnuncioBean {
         this.prezzo = prezzo;
     }
 
+
     public AnnuncioBean(String titoloLibro, String categoria, String isbn, String condizioni, int[] rangePrezzi) {
         this.titoloLibro = titoloLibro;
         this.categoria = categoria;

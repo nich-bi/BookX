@@ -4,6 +4,8 @@ import org.project.logic.bean.AnnuncioBean;
 import org.project.logic.control.CompraLibroController;
 import org.project.logic.control.VendiLibroController;
 import org.project.logic.model.Annuncio;
+import org.project.logic.model.Utente;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -249,9 +251,10 @@ public class CliUtente {
 
             switch(action) {
                 case "1":
+                    cronologiaAcquisti();
                     break;
-
                 case "2":
+                    visualizzaNotifiche();
                     break;
 
                 default:
@@ -283,6 +286,7 @@ public class CliUtente {
             Printer.printMsgln("Numero non valido");
         }
     }
+
 
     public void visualizzaAnnuncio(Annuncio a) throws IOException {
 
@@ -325,6 +329,15 @@ public class CliUtente {
                     break;
             }
         }
+    }
+
+
+    public void cronologiaAcquisti() throws IOException {
+        Printer.printMsgln("\nCronologia acquisti");
+    }
+
+    public void visualizzaNotifiche() throws IOException {
+        Printer.printMsgln("\nVisualizza notifiche");
     }
 
 

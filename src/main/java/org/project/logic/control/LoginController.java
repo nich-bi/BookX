@@ -31,11 +31,13 @@ public class LoginController {
         this.currentUser = currentUser;
     }
 
+
+    // TODO sostituire load() con load1()
     // Login Fallito -> 0; Utente -> 1; Fornitore -> 2
     public int validateLogin(LoginBean lb) {
         UserDao userDao = DaoFactory.getInstance().getUserDao();
 
-        if(userDao.exists(lb.getEmail())) {
+        if(userDao.exists1(lb.getEmail())) {
 
             User user = userDao.load(lb.getEmail());
 

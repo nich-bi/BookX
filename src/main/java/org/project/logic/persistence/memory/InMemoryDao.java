@@ -50,12 +50,12 @@ public abstract class InMemoryDao<K, V> implements Dao<K, V> {
     }
 
     // @Override
-    public void delete1(V value){
-        mem.remove(value);
+    public void delete1(V entity){
+        mem.remove(entity);
     }
 
-    // @Override
-    public boolean exists1(V value) {
+    @Override
+    public boolean exists1(K value) {
         return mem.contains(value);
     }
 

@@ -36,9 +36,8 @@ public class VendiLibroController {
         a.setVenditore(venditore);
         a.setLibro(l);
 
-        // ad.store(a);
-        // ld.store(l);
 
+        // per mem con ash map usare store()
         ad.store1(a);
         ld.store1(l);
 

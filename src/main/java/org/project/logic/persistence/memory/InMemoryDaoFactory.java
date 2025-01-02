@@ -3,6 +3,7 @@ package org.project.logic.persistence.memory;
 import org.project.logic.persistence.AnnuncioDao;
 import org.project.logic.persistence.DaoFactory;
 import org.project.logic.persistence.LibroDao;
+import org.project.logic.persistence.OrdineDao;
 
 public class InMemoryDaoFactory extends DaoFactory {
 
@@ -16,6 +17,10 @@ public class InMemoryDaoFactory extends DaoFactory {
 
     public LibroDao getLibroDao() {
         return InMemoryLibroDao.getInstance();
+    }
+
+    public OrdineDao getOrdineDao() {
+        return InMemoryOrdineDao.getInstance();
     }
 
 }

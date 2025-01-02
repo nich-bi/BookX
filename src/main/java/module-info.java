@@ -1,4 +1,4 @@
-module org.example.bookx {
+module org.project.logic {
     requires javafx.controls;
     requires javafx.fxml;
 
